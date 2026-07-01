@@ -1,7 +1,6 @@
 import React from 'react';
 import { useTerminal } from './hooks/useTerminal.js';
 import { COLOR } from './data/colors.js';
-import PreLabel from './components/PreLabel.jsx';
 import TerminalChrome from './components/TerminalChrome.jsx';
 import NavBar from './components/NavBar.jsx';
 import WelcomeBanner from './components/WelcomeBanner.jsx';
@@ -12,8 +11,6 @@ import HelpView from './components/HelpView.jsx';
 import SudoCard from './components/SudoCard.jsx';
 import Prompt from './components/Prompt.jsx';
 import StatusBar from './components/StatusBar.jsx';
-import PostFooter from './components/PostFooter.jsx';
-
 export default function App() {
   const t = useTerminal();
 
@@ -32,31 +29,25 @@ export default function App() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', background: 'radial-gradient(ellipse at top, #25365a 0%, #1a2942 70%)', padding: '32px 24px 48px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <PreLabel />
+    <div style={{ height: '100vh', width: '100vw', background: COLOR.bg, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+      <TerminalChrome />
+      <NavBar
+        cwd={t.cwd}
+        onBack={() => t.cwd !== '~' && t.jump('cd ..')}
+        onHome={t.goHome}
+        onJump={(cmd) => t.jump(cmd)}
+        onCrumb={(target) => t.run('cd ' + target)}
+      />
 
-      <div style={{ maxWidth: 920, width: '100%', background: COLOR.bg, borderRadius: 8, overflow: 'hidden', boxShadow: '0 30px 80px -20px rgba(0,0,0,0.55), 0 0 0 1px rgba(217,119,87,0.08)' }}>
-        <TerminalChrome />
-        <NavBar
-          cwd={t.cwd}
-          onBack={() => t.cwd !== '~' && t.jump('cd ..')}
-          onHome={t.goHome}
-          onJump={(cmd) => t.jump(cmd)}
-          onCrumb={(target) => t.run('cd ' + target)}
-        />
-
-        <div className="term-body" ref={t.bodyRef} onClick={t.focusInput}
-             style={{ height: 720, overflowY: 'auto', padding: '26px 32px 12px', fontSize: 13, lineHeight: 1.55, color: COLOR.text, background: COLOR.bg, cursor: 'text' }}>
-          {t.showWelcome && <WelcomeBanner run={t.run} />}
-          {t.lines.map(renderLine)}
-          <Prompt cwd={t.cwd} value={t.input} onChange={t.setInput} onKeyDown={t.onKeyDown}
-                  onSubmit={() => t.run(t.input)} inputRef={t.inputRef} />
-        </div>
-
-        <StatusBar cwd={t.cwd} />
+      <div className="term-body" ref={t.bodyRef} onClick={t.focusInput}
+           style={{ flex: 1, minHeight: 0, overflowY: 'auto', padding: '26px 32px 12px', fontSize: 13, lineHeight: 1.55, color: COLOR.text, background: COLOR.bg, cursor: 'text' }}>
+        {t.showWelcome && <WelcomeBanner run={t.run} />}
+        {t.lines.map(renderLine)}
+        <Prompt cwd={t.cwd} value={t.input} onChange={t.setInput} onKeyDown={t.onKeyDown}
+                onSubmit={() => t.run(t.input)} inputRef={t.inputRef} />
       </div>
 
-      <PostFooter />
+      <StatusBar cwd={t.cwd} />
     </div>
   );
 }
