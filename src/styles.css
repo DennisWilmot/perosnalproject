@@ -1,0 +1,17 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #1a2942; font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace; }
+a { color: inherit; text-decoration: none; }
+::selection { background: #d97757; color: #15233d; }
+.term-body::-webkit-scrollbar { width: 10px; }
+.term-body::-webkit-scrollbar-track { background: transparent; }
+.term-body::-webkit-scrollbar-thumb { background: #3a4a6a; border-radius: 5px; }
+.blink { animation: blink 1s steps(2) infinite; }
+@keyframes blink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
+.term-input:focus { outline: none; }
+.chip:hover { background: rgba(217,119,87,0.12); }
+.link-out { border-bottom: 1px solid #d97757; }
+.link-out:hover { background: #d97757; color: #0a0e18; }
+.ls-cell:hover { background: rgba(217,119,87,0.12); }
+.navbtn:hover { background: rgba(217,119,87,0.18); color: #f5ecd9; }
+.navbtn:disabled { opacity: 0.35; cursor: not-allowed; }
+.crumb:hover { color: #d97757; }
