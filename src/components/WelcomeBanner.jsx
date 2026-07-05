@@ -6,11 +6,12 @@ const note = { color: '#7a8499' };
 
 export default function WelcomeBanner({ run }) {
   const chips = [
-    ['skills/',     'what i actually do — AI engineering, systems, leadership', 'cd skills'],
-    ['experience/', "what i've shipped — pitched by the kind of problem",        'cd experience'],
-    ['background/', 'the why — story, schooling, influences',                    'cd background'],
-    ['about.md',    '30-second version',                                         'cat about.md'],
-    ['contact.md',  'how to reach me',                                           'cat contact.md'],
+    ['skills/',     'AI engineering, full-stack systems, delivery ownership', 'cd skills'],
+    ['experience/', 'Intellibus, AdamsAxiom, civic tech, earlier roles',      'cd experience'],
+    ['writing.md',  'Medium essays on crypto and blockchain',                'cat writing.md'],
+    ['background/', 'story and education',                                      'cd background'],
+    ['about.md',    'short overview of my current work',                      'cat about.md'],
+    ['contact.md',  'email, phone, LinkedIn, GitHub, projects',               'cat contact.md'],
   ];
   return (
     <div>
@@ -21,10 +22,10 @@ export default function WelcomeBanner({ run }) {
       </div>
 
       <div style={{ marginTop: 20, maxWidth: 720, lineHeight: 1.7, fontSize: 13.5, color: '#d4cfb8' }}>
-        I'm Dennis — AI engineer. I build agent systems that ship into real environments: agent fleets, RAG over messy data, products that have to work during real events.
+        I'm Dennis — an AI engineer and full-stack TypeScript developer building agent systems, retrieval workflows, data products, and real-time applications.
       </div>
       <div style={{ marginTop: 8, maxWidth: 720, lineHeight: 1.7, fontSize: 13.5, color: '#d4cfb8' }}>
-        This page is a directory you can walk through. <span style={{ color: '#d97757' }}>Use the buttons above</span>, or type, or click anything underlined.
+        This portfolio is a directory you can walk through. Start with <span style={{ color: '#d97757' }}>skills/ai.md</span> for the AI work, or open <span style={{ color: '#d97757' }}>experience/intellibus.md</span> for the project-by-project overview.
       </div>
 
       <div style={{ marginTop: 22, maxWidth: 720 }}>
